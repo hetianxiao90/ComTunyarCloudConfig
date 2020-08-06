@@ -1,0 +1,59 @@
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 6001
+spring:
+  profiles: dev
+  application:
+    name: tunyar-eureka #应用名称
+eureka:
+  instance:
+    appname: eureka-server #服务名
+    hostname: ${IP_ADDRESS:127.0.0.1} #应用实例主机名
+    prefer-ip-address: true #客户端在注册的时候使用自己的IP而不是主机名
+  client:
+    register-with-eureka: false #是否将自己注册到eureka
+    fetch-registry: false #服务发现，是否从Eureka中获取注册信息
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    # 自我保护
+    enable-self-preservation: true
+    # 主动检查服务时间
+    eviction-interval-timer-in-ms: 5000
+    # 服务过期时间，超过这个时间剔除服务
+    lease-expiration-duration-in-seconds: 10
+    # 服务刷新时间 主动心跳
+    lease-renewal-interval-in-seconds: 5
+    # 禁用readOnlyCacheMap
+    useReadOnlyResponseCache: false
+---
+server:
+  port: 6001
+spring:
+  profiles: test
+  application:
+    name: tunyar-eureka #应用名称
+eureka:
+  instance:
+    appname: eureka-server #服务名
+    hostname: ${IP_ADDRESS:127.0.0.1} #应用实例主机名
+    prefer-ip-address: true #客户端在注册的时候使用自己的IP而不是主机名
+  client:
+    register-with-eureka: false #是否将自己注册到eureka
+    fetch-registry: false #服务发现，是否从Eureka中获取注册信息
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    # 自我保护
+    enable-self-preservation: true
+    # 主动检查服务时间
+    eviction-interval-timer-in-ms: 5000
+    # 服务过期时间，超过这个时间剔除服务
+    lease-expiration-duration-in-seconds: 10
+    # 服务刷新时间 主动心跳
+    lease-renewal-interval-in-seconds: 5
+    # 禁用readOnlyCacheMap
+    useReadOnlyResponseCache: false
