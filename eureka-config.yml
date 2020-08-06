@@ -7,7 +7,7 @@ server:
 spring:
   profiles: dev
   application:
-    name: tunyar-eureka #应用名称
+    name: eureka #应用名称
 eureka:
   instance:
     appname: eureka-server #服务名
@@ -35,7 +35,7 @@ server:
 spring:
   profiles: test
   application:
-    name: tunyar-eureka #应用名称
+    name: eureka #应用名称
 eureka:
   instance:
     appname: eureka-server #服务名
