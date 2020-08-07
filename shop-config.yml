@@ -8,7 +8,7 @@ server:
 spring:
   profiles: dev
   application:
-    name: shop
+    name: tunyar-shop
 
 eureka:
   client:
@@ -30,7 +30,7 @@ server:
 spring:
   profiles: test
   application:
-    name: shop
+    name: tunyar-shop
 
 eureka:
   client:
