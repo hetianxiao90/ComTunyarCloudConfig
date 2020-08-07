@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 7101
+
+spring:
+  profiles: dev
+  application:
+    name: shop
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6001/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: ${IP_ADDRESS:127.0.0.1}
+    instance-id: ${spring.application.name}:${server.port} #eureka服务中心的名字 ucenter：7001
+feign:
+  hystrix:
+    enabled: true
+---
+server:
+  port: 7101
+
+spring:
+  profiles: test
+  application:
+    name: shop
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6001/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: ${IP_ADDRESS:127.0.0.1}
+    instance-id: ${spring.application.name}:${server.port} #eureka服务中心的名字 ucenter：7001
+
+feign:
+  hystrix:
+    enabled: true
