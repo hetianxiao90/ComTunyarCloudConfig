@@ -23,7 +23,7 @@ feign:
     enabled: true
 ---
 server:
-  port: 7002
+  port: 7003
 spring:
   profiles: test
   application:
